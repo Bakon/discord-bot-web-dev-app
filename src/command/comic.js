@@ -2,7 +2,7 @@ const { Message } = require('discord.js');
 const fetch = require('node-fetch');
 const parse = require('node-html-parser');
 
-export default class Comic {
+module.exports = class Comic {
     static name = 'comic';
     static aliases = ['comics'];
     static description = 'Gets a fun Cyanide and Happiness meme!';
@@ -25,4 +25,4 @@ export default class Comic {
             files: imagesArray,
         });
     };
-}
+};
