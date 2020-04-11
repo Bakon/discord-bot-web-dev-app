@@ -27,7 +27,7 @@ glob.sync(`${__dirname}/command/*.js`).forEach((filePath) => {
     }
 });
 
-bot.on('message', async (message: Discord.Message) => {
+bot.on('message', async (message) => {
     if (message.author.bot || message.channel.type === 'dm') return;
     if (!message.content.startsWith(prefix)) return;
 
@@ -38,7 +38,7 @@ bot.on('message', async (message: Discord.Message) => {
     const foundCommand =
         bot.commands.get(cmd) || bot.commands.get(bot.aliases.get(cmd));
 
-    foundCommand?.run(message, bot, args, options);
+    if (foundCommand) foundCommand.run(message, bot, args, options);
 });
 
 bot.login(DISCORD_TOKEN);
