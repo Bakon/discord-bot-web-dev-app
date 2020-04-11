@@ -1,7 +1,7 @@
 // @flow
-import { Message } from 'discord.js';
-import fetch from 'node-fetch';
-import { parse } from 'node-html-parser';
+const { Message } = require('discord.js');
+const fetch = require('node-fetch');
+const parse = require('node-html-parser');
 
 export default class Comic {
     static name = 'comic';
@@ -11,7 +11,7 @@ export default class Comic {
     static run = async (message: Message): Promise<Message> => {
         const imagesArray = await fetch('http://explosm.net/rcg')
             .then((res) => res.text())
-            .then((html: HTMLElement) =>
+            .then((html: parse.HTMLElement) =>
                 parse(html)
                     .querySelectorAll('.rcg-panels img')
                     .map((image) =>

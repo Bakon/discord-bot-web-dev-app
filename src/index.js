@@ -1,14 +1,14 @@
 // @flow
-import Discord, { Message, Collection } from 'discord.js';
-import glob from 'glob';
-import { DISCORD_TOKEN } from '../token';
+const Discord = require('discord.js');
+const glob = require('glob');
+const DISCORD_TOKEN = require('../token');
 
 const prefix = '?';
 const active = new Map();
 const bot = new Discord.Client();
 
-bot.commands = new Collection();
-bot.aliases = new Collection();
+bot.commands = new Discord.Collection();
+bot.aliases = new Discord.Collection();
 
 bot.on('ready', (): Promise<void> =>
     bot.user
@@ -33,18 +33,21 @@ glob.sync(`${__dirname}/command/*.js`).forEach((filePath: string): void => {
     }
 });
 
-bot.on('message', async (message: Message): Promise<Message> => {
-    if (message.author.bot || message.channel.type === 'dm') return;
-    if (!message.content.startsWith(prefix)) return;
+bot.on(
+    'message',
+    async (message: Discord.Message): Promise<Discord.Message> => {
+        if (message.author.bot || message.channel.type === 'dm') return;
+        if (!message.content.startsWith(prefix)) return;
 
-    const messageArray = message.content.split(' ');
-    const cmd = messageArray[0].slice(prefix.length);
-    const args = messageArray.slice(1);
-    const options = { active };
-    const foundCommand =
-        bot.commands.get(cmd) || bot.commands.get(bot.aliases.get(cmd));
+        const messageArray = message.content.split(' ');
+        const cmd = messageArray[0].slice(prefix.length);
+        const args = messageArray.slice(1);
+        const options = { active };
+        const foundCommand =
+            bot.commands.get(cmd) || bot.commands.get(bot.aliases.get(cmd));
 
-    foundCommand?.run(message, bot, args, options);
-});
+        foundCommand?.run(message, bot, args, options);
+    }
+);
 
 bot.login(DISCORD_TOKEN);
