@@ -1,0 +1,43 @@
+{
+    "name": "discord-bot-web-dev-app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon --exec babel-node src/index.js",
+        "flow": "flow"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Julicolo/discord-bot-web-dev-app.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Julicolo/discord-bot-web-dev-app/issues"
+    },
+    "homepage": "https://github.com/Julicolo/discord-bot-web-dev-app#readme",
+    "dependencies": {
+        "@babel/node": "^7.8.7",
+        "@babel/plugin-proposal-class-properties": "^7.8.3",
+        "@babel/plugin-proposal-optional-chaining": "^7.9.0",
+        "@babel/preset-env": "^7.9.5",
+        "babel-eslint": "^10.1.0",
+        "canvas": "^2.6.1",
+        "discord.js": "^12.1.1",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.10.1",
+        "glob": "^7.1.6",
+        "node-fetch": "^2.6.0",
+        "node-html-parser": "^1.2.15",
+        "nodemon": "^2.0.3",
+        "prettier": "^2.0.4"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.8.4",
+        "@babel/core": "^7.9.0",
+        "@babel/preset-flow": "^7.9.0",
+        "flow-bin": "^0.122.0"
+    }
+}
