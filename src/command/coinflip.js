@@ -1,4 +1,4 @@
-module.exports = class Coin {
+export default class Coin {
     static name = 'coinflip';
     static aliases = ['coin', 'munt'];
     static description = 'You either win, or lose!';
@@ -9,4 +9,4 @@ module.exports = class Coin {
                 ? 'The coin landed on `tails`'
                 : 'The coin landed on `heads`'
         );
-};
+}

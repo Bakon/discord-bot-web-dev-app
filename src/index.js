@@ -1,6 +1,6 @@
-const Discord = require('discord.js');
-const glob = require('glob');
-const DISCORD_TOKEN = require('../token');
+import Discord from 'discord.js';
+import glob from 'glob';
+import { DISCORD_TOKEN } from '../token';
 
 const prefix = '?';
 const active = new Map();
@@ -38,7 +38,7 @@ bot.on('message', async (message) => {
     const foundCommand =
         bot.commands.get(cmd) || bot.commands.get(bot.aliases.get(cmd));
 
-    if (foundCommand) foundCommand.run(message, bot, args, options);
+    foundCommand?.run(message, bot, args, options);
 });
 
 bot.login(DISCORD_TOKEN);

@@ -4,7 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "nodemon --exec babel-node src/index.js"
+        "start": "nodemon --exec babel-node src/index.js",
+        "prod": "git pull && pm2 restart --interpreter babel-node src/index.js"
     },
     "repository": {
         "type": "git",

@@ -1,13 +1,12 @@
-const { Message } = require('discord.js');
-const fetch = require('node-fetch');
-const parse = require('node-html-parser');
+import fetch from 'node-fetch';
+import parse from 'node-html-parser';
 
-module.exports = class Comic {
+export default class Comic {
     static name = 'comic';
     static aliases = ['comics'];
     static description = 'Gets a fun Cyanide and Happiness meme!';
 
-    static run = async (message: Message) => {
+    static run = async (message) => {
         const imagesArray = await fetch('http://explosm.net/rcg')
             .then((res) => res.text())
             .then((html) =>
@@ -25,4 +24,4 @@ module.exports = class Comic {
             files: imagesArray,
         });
     };
-};
+}
